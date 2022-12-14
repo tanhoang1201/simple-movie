@@ -1,5 +1,9 @@
-const images = {
-	notFound: require("./NotFound.png"),
-};
+import notFound from './NotFound.png'
+import banner from './banner.jpg'
 
-export default images;
+const images = {
+    notFound,
+    banner,
+}
+
+export default images

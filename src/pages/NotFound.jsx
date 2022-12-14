@@ -1,9 +1,12 @@
-import images from "../assets/images";
-
-console.log(images);
+import images from '../assets/images'
 
 function NotFound() {
-	return <div>Not Found</div>;
+    return (
+        <div
+            className='h-screen bg-no-repeat bg-contain bg-center'
+            style={{ backgroundImage: `url(${images.notFound})` }}
+        ></div>
+    )
 }
 
-export default NotFound;
+export default NotFound
