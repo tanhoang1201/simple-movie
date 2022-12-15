@@ -16,4 +16,14 @@
     .primaryBtn {
         @apply bg-primary py-3 px-6 rounded-md font-semibold;
     }
+
+    .mySwiper {
+        .swiper-scrollbar {
+            @apply bg-slate-700;
+
+            &-drag {
+                background-color: white;
+            }
+        }
+    }
 }
