@@ -4,22 +4,25 @@ import { fetchApi } from '../../configs/api.config'
 import { Swiper, SwiperSlide } from 'swiper/react'
 
 import 'swiper/css'
+import 'swiper/css/effect-fade'
 import 'swiper/css/pagination'
 import 'swiper/css/navigation'
 
-import { Autoplay, Pagination, Navigation } from 'swiper'
+import { Autoplay, Pagination, EffectFade } from 'swiper'
 
 import BannerItem from './BannerItem'
+import Loading from '../../components/Loading'
 
 function Banner({ className }) {
-    const { data, isLoading } = fetchApi(
-        `https://api.themoviedb.org/3/movie/upcoming?api_key=74c051a9a759397e400c5b9e1297574d`
-    )
-    console.log(data)
+    const { data, isLoading } = fetchApi.movies('upcoming')
+    const movies = data?.results || []
+
     return (
         <section className={`${className}`}>
             <Swiper
                 spaceBetween={30}
+                effect='fade'
+                loop={true}
                 centeredSlides={true}
                 autoplay={{
                     delay: 2500,
@@ -28,15 +31,15 @@ function Banner({ className }) {
                 pagination={{
                     clickable: true,
                 }}
-                modules={[Autoplay, Pagination]}
+                modules={[Autoplay, Pagination, EffectFade]}
                 className='mySwiper banner'
             >
-                {data &&
-                    data.results.map((result, index) => (
-                        <SwiperSlide key={result.id}>
-                            <BannerItem movie={result} />
-                        </SwiperSlide>
-                    ))}
+                {isLoading && <Loading />}
+                {movies.map((result, index) => (
+                    <SwiperSlide key={result.id}>
+                        <BannerItem movie={result} />
+                    </SwiperSlide>
+                ))}
             </Swiper>
         </section>
     )

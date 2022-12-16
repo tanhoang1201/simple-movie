@@ -1,9 +1,11 @@
 import PropTypes from 'prop-types'
+import { useNavigate } from 'react-router-dom'
 
 import Button from '../../components/Button'
 import { imageInstance } from '../../configs/api.config'
 
 function BannerItem({ movie }) {
+    const navigate = useNavigate()
     return (
         <div
             className='h-[500px] rounded-lg bg-center bg-cover relative overflow-hidden'
@@ -17,7 +19,9 @@ function BannerItem({ movie }) {
                     <Button style='outline'>Adventure</Button>
                     <Button style='outline'>Adventure</Button>
                 </div>
-                <Button style='primary'>Watch Now</Button>
+                <Button style='primary' onClick={() => navigate(`/movies/${movie.id}`)}>
+                    Watch Now
+                </Button>
             </div>
         </div>
     )

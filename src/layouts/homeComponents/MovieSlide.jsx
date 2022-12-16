@@ -9,9 +9,9 @@ import { fetchApi } from '../../configs/api.config'
 import Loading from '../../components/Loading'
 
 function MovieList({ className, title, type }) {
-    const { data, isLoading } = fetchApi(
-        `https://api.themoviedb.org/3/movie/${type}?api_key=74c051a9a759397e400c5b9e1297574d`
-    )
+    const { data, isLoading } = fetchApi.movies(type)
+    const movies = data?.results || []
+
     return (
         <section className={className}>
             <h2 className='text-2xl font-semibold mb-10'>{title}</h2>
@@ -27,12 +27,11 @@ function MovieList({ className, title, type }) {
                 }}
                 modules={[Scrollbar]}
             >
-                {data &&
-                    data.results.map((result, index) => (
-                        <SwiperSlide key={result.id}>
-                            <MovieCart movie={result} />
-                        </SwiperSlide>
-                    ))}{' '}
+                {movies.map((result, index) => (
+                    <SwiperSlide key={result.id}>
+                        <MovieCart movie={result} />
+                    </SwiperSlide>
+                ))}{' '}
                 {isLoading && <Loading />}
             </Swiper>
         </section>
