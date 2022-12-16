@@ -1,24 +1,43 @@
 import PropTypes from 'prop-types'
 
-import images from '../../assets/images'
-import Button from '../../components/Button'
+import { fetchApi } from '../../configs/api.config'
+import { Swiper, SwiperSlide } from 'swiper/react'
+
+import 'swiper/css'
+import 'swiper/css/pagination'
+import 'swiper/css/navigation'
+
+import { Autoplay, Pagination, Navigation } from 'swiper'
+
+import BannerItem from './BannerItem'
 
 function Banner({ className }) {
+    const { data, isLoading } = fetchApi(
+        `https://api.themoviedb.org/3/movie/upcoming?api_key=74c051a9a759397e400c5b9e1297574d`
+    )
+    console.log(data)
     return (
-        <section
-            className={`${className} h-[500px] rounded-lg bg-center bg-cover relative overflow-hidden`}
-            style={{ backgroundImage: `url(${images.banner})` }}
-        >
-            <div className='absolute inset-0 bg-gradient-to-t from-[rgba(0,0,0,0.8)] to-[rgba(0,0,0,0.1)]'></div>
-            <div className='absolute left-0 bottom-0 w-full p-6 '>
-                <h2 className='text-4xl font-bold mb-5'>Avengers: Endgame</h2>
-                <div className='flex gap-5 mb-8'>
-                    <Button style='outline'>Adventure</Button>
-                    <Button style='outline'>Adventure</Button>
-                    <Button style='outline'>Adventure</Button>
-                </div>
-                <Button style='primary'>Watch Now</Button>
-            </div>
+        <section className={`${className}`}>
+            <Swiper
+                spaceBetween={30}
+                centeredSlides={true}
+                autoplay={{
+                    delay: 2500,
+                    disableOnInteraction: false,
+                }}
+                pagination={{
+                    clickable: true,
+                }}
+                modules={[Autoplay, Pagination]}
+                className='mySwiper banner'
+            >
+                {data &&
+                    data.results.map((result, index) => (
+                        <SwiperSlide key={result.id}>
+                            <BannerItem movie={result} />
+                        </SwiperSlide>
+                    ))}
+            </Swiper>
         </section>
     )
 }

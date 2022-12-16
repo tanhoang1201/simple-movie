@@ -1,12 +1,12 @@
-import { Banner, MovieList } from '../layouts/homeComponents'
+import { Banner, MovieSlide } from '../layouts/homeComponents'
 
 function Home() {
     return (
         <div>
             <Banner className='mb-20' />
-            <MovieList title='Now Playing' className='mb-20' />
-            <MovieList title='Top Rating' className='mb-20' />
-            <MovieList title='Trending' />
+            <MovieSlide title='Now Playing' className='mb-20' type='now_playing' />
+            <MovieSlide title='Top Rating' className='mb-20' type='top_rated' />
+            <MovieSlide title='Trending' type='popular' />
         </div>
     )
 }

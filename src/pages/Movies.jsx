@@ -1,5 +1,11 @@
+import MovieList from '../layouts/moviesComponents/MovieList'
+
 function Movies() {
-	return <div>Movies</div>;
+    return (
+        <div>
+            <MovieList />
+        </div>
+    )
 }
 
-export default Movies;
+export default Movies
