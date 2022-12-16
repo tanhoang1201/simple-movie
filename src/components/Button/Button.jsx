@@ -1,29 +1,28 @@
-import PropTypes from 'prop-types'
+import PropTypes from "prop-types";
 
 function Button({
-    children,
-    style = 'primary',
-    className,
-    elementType = 'button',
-    onClick,
-    ...props
+	children,
+	style = "primary",
+	className,
+	elementType = "button",
+	onClick,
+	...props
 }) {
-    let classes =
-        style === 'primary' ? 'primaryBtn' : style === 'outline' ? 'outlineBtn' : 'fullBtn'
-    let Com = elementType
-    return (
-        <Com {...props} className={`${className} ${classes}`} onClick={onClick}>
-            {children}
-        </Com>
-    )
+	let classes = style === "primary" ? "primaryBtn" : style === "outline" ? "outlineBtn" : "fullBtn";
+	let Com = elementType;
+	return (
+		<Com {...props} className={`${className} ${classes} active:bg-opacity-70`} onClick={onClick}>
+			{children}
+		</Com>
+	);
 }
 
 Button.propTypes = {
-    children: PropTypes.node.isRequired,
-    style: PropTypes.string,
-    className: PropTypes.string,
-    elementType: PropTypes.string,
-    onClick: PropTypes.func,
-}
+	children: PropTypes.node.isRequired,
+	style: PropTypes.string,
+	className: PropTypes.string,
+	elementType: PropTypes.string,
+	onClick: PropTypes.func,
+};
 
-export default Button
+export default Button;
