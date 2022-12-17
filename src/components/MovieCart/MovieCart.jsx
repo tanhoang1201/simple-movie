@@ -2,14 +2,18 @@ import PropTypes from 'prop-types'
 import { useNavigate } from 'react-router-dom'
 import Button from '../Button'
 import { imageInstance } from '../../configs/api.config'
+import images from '../../assets/images'
 
 function MovieCart({ movie }) {
     const navigate = useNavigate()
+    const errorPoster = movie.poster_path
+        ? `${imageInstance}${movie.poster_path}`
+        : images.errorAvatar
     return (
         <div className='rounded-xl p-4 bg-slate-800 h-full select-none flex flex-col'>
             <div
                 className='pt-[100%] bg-top bg-cover rounded-xl mb-4'
-                style={{ backgroundImage: `url(${imageInstance}${movie.poster_path})` }}
+                style={{ backgroundImage: `url(${errorPoster})` }}
             ></div>
             <div className='flex-1 flex flex-col'>
                 <h3 className='mb-3 text-lg font-semibold text-overflow'>{movie.title}</h3>

@@ -4,13 +4,22 @@ import { Scrollbar } from 'swiper'
 import 'swiper/css/scrollbar'
 import 'swiper/css'
 
-import MovieCart from '../../components/MovieCart'
-import { fetchApi } from '../../configs/api.config'
-import Loading from '../../components/Loading'
+import MovieCart from './MovieCart'
+import { api, fetchApi } from '../configs/api.config'
+import Loading from './Loading'
 
 function MovieList({ className, title, type }) {
-    const { data, isLoading } = fetchApi.movies(type)
-    const movies = data?.results || []
+    const { data, error } = fetchApi(api.getMovies(type))
+
+    if (error) {
+        return 'Error...'
+    }
+
+    if (!data) {
+        return <Loading />
+    }
+
+    const { results: movies } = data
 
     return (
         <section className={className}>
@@ -32,7 +41,6 @@ function MovieList({ className, title, type }) {
                         <MovieCart movie={result} />
                     </SwiperSlide>
                 ))}{' '}
-                {isLoading && <Loading />}
             </Swiper>
         </section>
     )

@@ -1,21 +1,23 @@
 import PropTypes from 'prop-types'
-
-import { fetchApi } from '../../configs/api.config'
 import { Swiper, SwiperSlide } from 'swiper/react'
+import { Autoplay, Pagination, EffectFade } from 'swiper'
 
 import 'swiper/css'
 import 'swiper/css/effect-fade'
 import 'swiper/css/pagination'
 import 'swiper/css/navigation'
 
-import { Autoplay, Pagination, EffectFade } from 'swiper'
-
+import { fetchApi, api } from '../../configs/api.config'
 import BannerItem from './BannerItem'
 import Loading from '../../components/Loading'
 
 function Banner({ className }) {
-    const { data, isLoading } = fetchApi.movies('upcoming')
-    const movies = data?.results || []
+    const { data, error } = fetchApi(api.getMovies('upcoming'))
+
+    if (!data) {
+        return <Loading />
+    }
+    const { results: movies } = data
 
     return (
         <section className={`${className}`}>
@@ -34,7 +36,6 @@ function Banner({ className }) {
                 modules={[Autoplay, Pagination, EffectFade]}
                 className='mySwiper banner'
             >
-                {isLoading && <Loading />}
                 {movies.map((result, index) => (
                     <SwiperSlide key={result.id}>
                         <BannerItem movie={result} />
