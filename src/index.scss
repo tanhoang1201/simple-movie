@@ -3,100 +3,100 @@
 @tailwind utilities;
 
 @layer base {
-    body {
-        @apply font-body bg-slate-900 text-white;
-        overflow: overlay;
-    }
+	body {
+		@apply font-body bg-slate-900 text-white;
+		overflow: overlay;
+	}
 }
 
 @layer components {
-    .outlineBtn {
-        @apply border py-2 px-4 rounded;
-    }
+	.outlineBtn {
+		@apply border py-2 px-4 rounded;
+	}
 
-    .primaryBtn {
-        @apply bg-primary py-3 px-6 rounded-md font-semibold;
-    }
+	.primaryBtn {
+		@apply bg-primary py-3 px-6 rounded-md font-semibold;
+	}
 
-    .mySwiper.movieSlide {
-        @apply pb-8;
+	.mySwiper.movieSlide {
+		@apply pb-8;
 
-        .swiper-slide {
-            @apply h-auto;
-        }
+		.swiper-slide {
+			@apply h-auto;
+		}
 
-        .swiper-scrollbar {
-            @apply bg-slate-700;
+		.swiper-scrollbar {
+			@apply bg-slate-700;
 
-            &-drag {
-                background-color: white;
-            }
-        }
-    }
+			&-drag {
+				background-color: white;
+			}
+		}
+	}
 
-    .mySwiper.banner {
-        .swiper-pagination {
-            .swiper-pagination-bullet {
-                @apply bg-slate-300;
-            }
-            .swiper-pagination-bullet-active {
-                @apply bg-slate-100;
-            }
-        }
-    }
+	.mySwiper.banner {
+		.swiper-pagination {
+			.swiper-pagination-bullet {
+				@apply bg-slate-300;
+			}
+			.swiper-pagination-bullet-active {
+				@apply bg-slate-100;
+			}
+		}
+	}
 }
 
 /* loading */
 
 .dashed-loading {
-    position: absolute;
-    left: 50%;
-    top: 30%;
-    transform: translateX(-50%);
-    height: 50px;
-    width: 50px;
+	position: absolute;
+	left: 50%;
+	top: 30%;
+	transform: translateX(-50%);
+	height: 50px;
+	width: 50px;
 }
 
 .dashed-loading:after,
 .dashed-loading:before {
-    content: '';
-    position: absolute;
-    top: 0;
-    border-radius: 50%;
-    width: 100%;
-    height: 100%;
+	content: "";
+	position: absolute;
+	top: 0;
+	border-radius: 50%;
+	width: 100%;
+	height: 100%;
 }
 
 .dashed-loading:before {
-    z-index: 5;
-    border: 3px dashed #ff6bcb;
-    border-left: 3px solid transparent;
-    border-bottom: 3px solid transparent;
-    -webkit-animation: dashed 1s linear infinite;
-    animation: dashed 1s linear infinite;
+	z-index: 5;
+	border: 3px dashed #ff6bcb;
+	border-left: 3px solid transparent;
+	border-bottom: 3px solid transparent;
+	-webkit-animation: dashed 1s linear infinite;
+	animation: dashed 1s linear infinite;
 }
 
 .dashed-loading:after {
-    z-index: 10;
-    border: 3px solid #ffb86c;
-    border-left: 3px solid transparent;
-    border-bottom: 3px solid transparent;
-    -webkit-animation: dashed 1s ease infinite;
-    animation: dashed 1s ease infinite;
+	z-index: 10;
+	border: 3px solid #ffb86c;
+	border-left: 3px solid transparent;
+	border-bottom: 3px solid transparent;
+	-webkit-animation: dashed 1s ease infinite;
+	animation: dashed 1s ease infinite;
 }
 
 @keyframes dashed {
-    to {
-        transform: rotate(360deg);
-    }
+	to {
+		transform: rotate(360deg);
+	}
 }
 
 /* text-overflow */
 
 .text-overflow {
-    display: block;
-    display: -webkit-box;
-    -webkit-line-clamp: 2;
-    -webkit-box-orient: vertical;
-    overflow: hidden;
+	display: block;
+	display: -webkit-box;
+	-webkit-line-clamp: 2;
+	-webkit-box-orient: vertical;
+	overflow: hidden;
 }
