@@ -5,7 +5,7 @@ import Loading from '../../components/Loading'
 import MovieCart from '../../components/MovieCart'
 import { useEffect, useState } from 'react'
 
-function MovieList({ query }) {
+function MovieList({ query, className }) {
     const [url, setUrl] = useState(api.getMovies('popular'))
     const { data, error } = fetchApi(url)
     useEffect(() => {
@@ -23,7 +23,7 @@ function MovieList({ query }) {
     const { results: movies } = data
 
     return (
-        <section className={`grid grid-cols-4 gap-5 auto-rows-fr`}>
+        <section className={`${className} grid grid-cols-4 gap-5 auto-rows-fr`}>
             {movies.map((result, index) => (
                 <MovieCart key={result.id} movie={result} />
             ))}
@@ -33,6 +33,7 @@ function MovieList({ query }) {
 
 MovieList.propTypes = {
     query: PropTypes.string,
+    className: PropTypes.string,
 }
 
 export default MovieList

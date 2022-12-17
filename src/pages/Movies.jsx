@@ -1,11 +1,10 @@
 import { useState } from 'react'
 import lodash from 'lodash'
+import { Pagination } from '@mui/material'
 
 import Button from '../components/Button'
 import { SearchIcon } from '../components/icons'
 import MovieList from '../layouts/moviesComponents/MovieList'
-
-// https://api.themoviedb.org/3/search/movie?api_key=<<api_key>>
 
 function Movies() {
     const [filter, setFilter] = useState('')
@@ -27,7 +26,16 @@ function Movies() {
                     <SearchIcon />
                 </Button>
             </div>
-            <MovieList query={filter} />
+            <MovieList query={filter} className='mb-10' />
+            <div className='mx-auto'>
+                <Pagination
+                    count={10}
+                    color='primary'
+                    size='large'
+                    showFirstButton
+                    showLastButton
+                />
+            </div>
         </div>
     )
 }
