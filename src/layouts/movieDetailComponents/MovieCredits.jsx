@@ -19,9 +19,9 @@ function MovieCredits({ movieId, className }) {
 	return (
 		<section className={className}>
 			<h2 className="text-center text-2xl font-semibold mb-8">Cast</h2>
-			<div className="grid grid-cols-5 gap-8 ">
+			<div className="grid grid-flow-col auto-cols-[60%] gap-5 md:auto-cols-[45%] lg:grid-cols-5 overflow-x-auto">
 				{cast.slice(0, 5).map((item, index) => (
-					<div key={item.id}>
+					<div key={item.id} className="">
 						<img
 							src={item.profile_path ? `${imageInstance(item.profile_path)}` : images.errorImg}
 							alt="Actor"

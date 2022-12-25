@@ -25,16 +25,28 @@ function MovieList({ className, title, type }) {
 		<section className={className}>
 			<h2 className="text-2xl font-semibold mb-10">{title}</h2>
 			<Swiper
-				slidesPerView={4}
+				slidesPerView={1}
 				spaceBetween={30}
 				grabCursor={true}
-				slidesPerGroup={2}
+				slidesPerGroup={1}
 				className="mySwiper movieSlide"
 				scrollbar={{
 					hide: false,
 					draggable: true,
 				}}
 				modules={[Scrollbar]}
+				breakpoints={{
+					640: {
+						slidesPerView: 2,
+					},
+					1024: {
+						slidesPerView: 3,
+						slidesPerGroup: 2,
+					},
+					1280: {
+						slidesPerView: 4,
+					},
+				}}
 			>
 				{movies.map((result, index) => (
 					<SwiperSlide key={result.id}>

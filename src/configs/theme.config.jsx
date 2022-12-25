@@ -42,7 +42,7 @@ const themeConfigs = ({ mode }) => {
 		spacing: 4,
 		breakpoints: {
 			values: {
-				xs: 0,
+				xs: 480,
 				sm: 640,
 				md: 768,
 				lg: 1024,

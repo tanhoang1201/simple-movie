@@ -100,3 +100,19 @@
 	-webkit-box-orient: vertical;
 	overflow: hidden;
 }
+
+@media only screen and (min-width: 480px) {
+	body {
+		:root {
+			--mobile: 1;
+		}
+	}
+}
+
+@media only screen and (min-width: 768px) {
+	body {
+		:root {
+			--pc: 2;
+		}
+	}
+}

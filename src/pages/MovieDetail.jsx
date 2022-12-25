@@ -42,7 +42,7 @@ function MovieDetail() {
 						</span>
 					))}
 				</div>
-				<p className="w-2/3 text-center mx-auto">{movie.overview}</p>
+				<p className="w-full md:w-2/3 text-center mx-auto">{movie.overview}</p>
 			</section>
 			<MovieCredits movieId={movieId} className="mb-14" />
 			<MovieTrailer movieId={movieId} className="mb-10" />

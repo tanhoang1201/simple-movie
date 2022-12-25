@@ -19,7 +19,7 @@ function Movies() {
 					defaultValue={filter}
 					onChange={handleChange}
 					type="text"
-					className="w-1/3 rounded-md px-3 outline-none bg-slate-700"
+					className="md:w-2/3 lg:w-1/3 rounded-md px-3 outline-none bg-slate-700 w-full"
 					placeholder="Search movies..."
 				/>
 				<Button style="primary">
